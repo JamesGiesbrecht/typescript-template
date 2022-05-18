@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Basic template for writing and running Typescript files",
   "main": "src/index.ts",
-  "type": "module",
   "scripts": {
     "start": "node dist/index.js",
     "build": "tsc",
@@ -16,6 +15,9 @@
   "author": "James Giesbrecht",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.17.12",
+    "@babel/preset-env": "^7.17.12",
+    "@babel/preset-typescript": "^7.17.12",
     "@types/node": "^17.0.34",
     "@typescript-eslint/eslint-plugin": "^5.25.0",
     "@typescript-eslint/parser": "^5.25.0",

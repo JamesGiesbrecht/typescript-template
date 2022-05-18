@@ -18,7 +18,6 @@ module.exports = {
   },
   plugins: ['@typescript-eslint', 'prettier'],
   root: true,
-  ignorePatterns: ['.eslintrc.js'],
   rules: {
     'import/extensions': 'off',
     'import/no-unresolved': 'off',
@@ -28,7 +27,7 @@ module.exports = {
     'no-restricted-syntax': 'off',
     'no-shadow': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    'prefer-default-export': 'off',
+    'import/prefer-default-export': 'off',
     '@typescript-eslint/no-shadow': 'error',
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': 'warn',
@@ -37,12 +36,9 @@ module.exports = {
     'prettier/prettier': [
       'warn',
       {
-        semi: false,
-        trailingComma: 'all',
         singleQuote: true,
-        printWidth: 100,
-        parser: 'typescript',
-        tabWidth: 2,
+        trailingComma: 'all',
+        semi: false,
         endOfLine: 'auto',
       },
     ],
