@@ -28,10 +28,11 @@ module.exports = {
     'no-shadow': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'import/prefer-default-export': 'off',
+    // '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-shadow': 'error',
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': 'warn',
-    'object-curly-newline': ['error', { ObjectPattern: { multiline: true } }],
+    // 'object-curly-newline': ['error', { ObjectPattern: { multiline: true } }],
     semi: ['error', 'never'],
     'prettier/prettier': [
       'warn',

@@ -1,8 +1,8 @@
 {
-  "compilerOptions":{
-    "module": "commonjs",
+  "compilerOptions": {
+    "module": "ESNext",
     "moduleResolution": "node",
-    "target": "es5",
+    "target": "es2017",
     "strict": true,
     "declaration": true,
     "outDir": "dist",
@@ -24,17 +24,11 @@
     "alwaysStrict": true,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
-    "noImplicitAny": true,
+    // "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
-    "lib":[
-      "es2021"
-    ],
+    "lib": ["es2021"]
   },
-  "include":[
-     "src/**/*"
-  ],
-  "exclude":[
-     "node_modules"
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }
