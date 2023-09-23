@@ -1,6 +1,10 @@
 import dotenv from 'dotenv'
+import { helloWorld, asyncHelloWorld } from './helloWorld.js'
 
 // process.env.VAR_NAME
 dotenv.config()
 
-console.log('Hello ', process.env.USER)
+const { USER } = process.env
+
+helloWorld(USER)
+asyncHelloWorld(USER)
