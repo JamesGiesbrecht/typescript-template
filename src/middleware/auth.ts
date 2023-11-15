@@ -8,6 +8,7 @@ const unauthorizedResponse = (res: Response, errorMessage?: string) => {
   res.status(401).json({ message })
 }
 
+// Middleware to check for valid API key
 export const apiKeyMiddleware: RequestHandler = (
   req: Request,
   res: Response,
@@ -21,6 +22,7 @@ export const apiKeyMiddleware: RequestHandler = (
   }
 }
 
+// Middleware to check for valid token
 export const tokenAuthMiddleware: RequestHandler = (
   req: Request,
   res: Response,
@@ -34,6 +36,7 @@ export const tokenAuthMiddleware: RequestHandler = (
   }
 }
 
+// Middleware for basic authentication
 export const basicAuthMiddleware = basicAuth({
   authorizer: (username: string, password: string) => {
     if (!ADMIN_USERNAME || !ADMIN_PASSWORD) {
@@ -47,17 +50,20 @@ export const basicAuthMiddleware = basicAuth({
   unauthorizedResponse,
 })
 
+// Middleware to handle authentication
 export const authRouterMiddleware: RequestHandler = (
   req: Request,
   res: Response,
   next: NextFunction,
 ) => {
+  // Warn if auth is disabled
   if (NO_AUTH) {
     console.warn('AUTH DISABLED')
     next()
     return
   }
 
+  // Handle undefined API Key
   if (!API_KEY) {
     unauthorizedResponse(res, 'API_KEY not configured')
   }
@@ -78,6 +84,7 @@ export const authRouterMiddleware: RequestHandler = (
   }
 }
 
+// Manually generate API key
 export const generateApiKey = () => {
   const keyLength = 32
   let apiKey = 'gfa-'
