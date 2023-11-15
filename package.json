@@ -10,7 +10,7 @@
     "build": "tsc",
     "build:watch": "tsc --watch --preserveWatchOutput",
     "dev": "yarn build && yarn start",
-    "dev:watch": "concurrently -k \"yarn build:watch\" \"yarn start:watch\"",
+    "watch": "concurrently -k \"yarn build:watch\" \"yarn start:watch\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint '*/**/*.ts'"
   },
@@ -20,6 +20,9 @@
     "@babel/core": "^7.17.12",
     "@babel/preset-env": "^7.17.12",
     "@babel/preset-typescript": "^7.17.12",
+    "@types/body-parser": "^1.19.4",
+    "@types/express": "^4.17.18",
+    "@types/morgan": "^1.9.7",
     "@types/node": "^20.6.3",
     "@typescript-eslint/eslint-plugin": "^6.7.2",
     "@typescript-eslint/parser": "^6.7.2",
@@ -35,6 +38,13 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "dotenv": "^16.0.3"
+    "axios": "^1.5.1",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-basic-auth": "^1.2.1",
+    "http-proxy-middleware": "^2.0.6",
+    "morgan": "^1.10.0",
+    "morgan-body": "^2.6.9"
   }
 }
