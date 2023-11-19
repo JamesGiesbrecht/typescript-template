@@ -47,23 +47,23 @@ pipeline {
         }
       }
     }
-    // // Customize deploy for other environments
-    // stage('Production Deploy') {
-    //   when {
-    //     allOf {
-    //         environment name: 'BRANCH', value: 'main'
-    //         environment name: 'DEPLOY_ENV', value: 'prod'
-    //     }
-    //   }
-    //   // Conditionally customize environment variables
-    //   environment {
-    //     // TYPESCRIPT_TEMPLATE_PORT = credentials('TYPESCRIPT_TEMPLATE_PORT_PROD')
-    //     CONTAINER_NAME = 'typesript-template-prod'
-    //   }
-    //   steps {
-    //     echo "Production environment variables set"
-    //   }
-    // }
+    // Customize deploy for other environments
+    stage('Production Deploy') {
+      when {
+        allOf {
+            environment name: 'BRANCH', value: 'main'
+            environment name: 'DEPLOY_ENV', value: 'prod'
+        }
+      }
+      // Conditionally customize environment variables
+      environment {
+        // TYPESCRIPT_TEMPLATE_PORT = credentials('TYPESCRIPT_TEMPLATE_PORT_PROD')
+        CONTAINER_NAME = 'typesript-template-prod'
+      }
+      steps {
+        echo "Production environment variables set"
+      }
+    }
     stage('Deploy') {
       steps {
         script {
@@ -77,7 +77,7 @@ pipeline {
                   -d \
                   --name='${CONTAINER_NAME}' \
                   --net='bridge' \
-                  -e API_KEY'='${API_KEY}' \
+                  -e 'API_KEY'='${API_KEY}' \
                   -e ADMIN_USERNAME'='${ADMIN_USERNAME}' \
                   -e ADMIN_PASSWORD'='${ADMIN_PASSWORD}' \
                   -p '${TYPESCRIPT_TEMPLATE_PORT}:3000' \
