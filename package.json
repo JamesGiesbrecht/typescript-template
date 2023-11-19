@@ -12,7 +12,10 @@
     "dev": "yarn build && yarn start",
     "watch": "concurrently -k \"yarn build:watch\" \"yarn start:watch\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint '*/**/*.ts'"
+    "lint": "eslint '*/**/*.ts'",
+    "compose:dev": "docker-compose -f docker-compose.yaml -f docker-compose.dev.yaml up -d --build && yarn compose:logs",
+    "compose:prod": "docker-compose up -d --build && yarn compose:logs",
+    "compose:logs": "docker-compose logs -f"
   },
   "author": "James Giesbrecht",
   "license": "ISC",

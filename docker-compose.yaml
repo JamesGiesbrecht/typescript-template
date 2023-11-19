@@ -1,0 +1,23 @@
+# docker exec -t -i mycontainer /bin/bash
+version: '3.8'
+services:
+  server:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      target: prod
+    ports:
+      - '3000:3000'
+    volumes:
+      - /app/node_modules
+    env_file:
+      - .env
+    environment:
+      API_KEY: test
+      LOG_FILE: 'logs/express.log'
+      NO_AUTH: true
+      ADMIN_USERNAME: admin
+      ADMIN_PASSWORD: password
+      NODE_ENV: production
+volumes:
+  data:
