@@ -36,7 +36,7 @@ pipeline {
     stage('Docker Build and Publish') {
       steps {
         script {
-          docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
+          docker.withRegistry("https://index.docker.io/v1/", 'dockerhub') {
             def app = docker.build(
               "jamesgiesbrecht/typescript-template:${commit_id}",
               """--target prod \
