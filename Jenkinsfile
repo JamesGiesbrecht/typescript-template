@@ -61,9 +61,7 @@ pipeline {
         CONTAINER_NAME = 'typesript-template-prod'
       }
       steps {
-        echo {
-          "Production environment variables set"
-        }
+        echo "Production environment variables set"
       }
     }
     stage('Deploy') {
