@@ -16,13 +16,13 @@ pipeline {
     )
   }
   environment {
-      CONTAINER_NAME                      = 'typescript-template-dev'
-      UNRAID_PORT                         = credentials('UNRAID_PORT_DEV')
-      API_KEY                             ='test'
-      LOG_FILE                            ='logs/express.log'
-      NO_AUTH                             =true
-      ADMIN_USERNAME                      ='admin'
-      ADMIN_PASSWORD                      ='password'
+      CONTAINER_NAME            = 'typescript-template-dev'
+      TYPESCRIPT_TEMPLATE_PORT  = credentials('TYPESCRIPT_TEMPLATE_PORT')
+      API_KEY                   ='test'
+      LOG_FILE                  ='logs/express.log'
+      NO_AUTH                   =true
+      ADMIN_USERNAME            ='admin'
+      ADMIN_PASSWORD            ='password'
   }
   stages {
     stage('Preparation') {
@@ -98,7 +98,7 @@ pipeline {
                   -e LOG_FILE'='${LOG_FILE}' \
                   -e ADMIN_USERNAME'='${ADMIN_USERNAME}' \
                   -e ADMIN_PASSWORD'='${ADMIN_PASSWORD}' \
-                  -p '${UNRAID_PORT}:3001' \
+                  -p '${TYPESCRIPT_TEMPLATE_PORT}:3001' \
                   'jamesgiesbrecht/typescript-template:${commit_id}'"""
         }
       }
