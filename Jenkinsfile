@@ -78,8 +78,8 @@ pipeline {
                   --name='${CONTAINER_NAME}' \
                   --net='bridge' \
                   -e 'API_KEY'='${API_KEY}' \
-                  -e ADMIN_USERNAME'='${ADMIN_USERNAME}' \
-                  -e ADMIN_PASSWORD'='${ADMIN_PASSWORD}' \
+                  -e 'ADMIN_USERNAME'='${ADMIN_USERNAME}' \
+                  -e 'ADMIN_PASSWORD'='${ADMIN_PASSWORD}' \
                   -p '${TYPESCRIPT_TEMPLATE_PORT}:3000' \
                   'jamesgiesbrecht/typescript-template:${commit_id}'"""
         }
