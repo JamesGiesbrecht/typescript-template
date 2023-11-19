@@ -60,6 +60,11 @@ pipeline {
         // TYPESCRIPT_TEMPLATE_PORT = credentials('TYPESCRIPT_TEMPLATE_PORT_PROD')
         CONTAINER_NAME = 'typesript-template-prod'
       }
+      steps {
+        echo {
+          "Production environment variables set"
+        }
+      }
     }
     stage('Deploy') {
       steps {
