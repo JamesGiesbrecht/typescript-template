@@ -71,7 +71,7 @@ pipeline {
     //               -d \
     //               --name='${CONTAINER_NAME}' \
     //               --net='bridge' \
-    //               -p '${UNRAID_PORT}:3001' \
+    //               -p '${UNRAID_PORT}:3000' \
     //               'jamesgiesbrecht/typescript-template:${commit_id}'"""
     //     }
     //   }
@@ -98,7 +98,7 @@ pipeline {
                   -e LOG_FILE'='${LOG_FILE}' \
                   -e ADMIN_USERNAME'='${ADMIN_USERNAME}' \
                   -e ADMIN_PASSWORD'='${ADMIN_PASSWORD}' \
-                  -p '${TYPESCRIPT_TEMPLATE_PORT}:3001' \
+                  -p '${TYPESCRIPT_TEMPLATE_PORT}:3000' \
                   'jamesgiesbrecht/typescript-template:${commit_id}'"""
         }
       }

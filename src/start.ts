@@ -7,7 +7,8 @@ import apiRoutes from './routes/api/index.js'
 
 import { authRouterMiddleware } from './middleware/auth.js'
 
-const { PORT, NODE_ENV } = process.env
+const { NODE_ENV } = process.env
+const PORT = process.env.PORT || 3000
 
 const app: Express = express()
 const server = http.createServer(app)
