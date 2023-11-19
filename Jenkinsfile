@@ -39,7 +39,7 @@ pipeline {
         script {
           docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
             def app = docker.build(
-              "jamesgiesbrecht/james-giesbrecht-ca:${commit_id}",
+              "jamesgiesbrecht/typescript-template:${commit_id}",
               """--target prod \
               -f Dockerfile ."""
             ).push()
