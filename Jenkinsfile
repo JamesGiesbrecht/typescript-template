@@ -47,23 +47,23 @@ pipeline {
         }
       }
     }
-    // Customize deploy for other environments
-    stage('Production Deploy') {
-      when {
-        allOf {
-            environment name: 'BRANCH', value: 'main'
-            environment name: 'DEPLOY_ENV', value: 'prod'
-        }
-      }
-      // Conditionally customize environment variables
-      environment {
-        // TYPESCRIPT_TEMPLATE_PORT = credentials('TYPESCRIPT_TEMPLATE_PORT_PROD')
-        CONTAINER_NAME = 'typesript-template-prod'
-      }
-      steps {
-        echo "Production environment variables set"
-      }
-    }
+    // // Customize deploy for other environments
+    // stage('Production Deploy') {
+    //   when {
+    //     allOf {
+    //         environment name: 'BRANCH', value: 'main'
+    //         environment name: 'DEPLOY_ENV', value: 'prod'
+    //     }
+    //   }
+    //   // Conditionally customize environment variables
+    //   environment {
+    //     // TYPESCRIPT_TEMPLATE_PORT = credentials('TYPESCRIPT_TEMPLATE_PORT_PROD')
+    //     CONTAINER_NAME = 'typesript-template-prod'
+    //   }
+    //   steps {
+    //     echo "Production environment variables set"
+    //   }
+    // }
     stage('Deploy') {
       steps {
         script {
