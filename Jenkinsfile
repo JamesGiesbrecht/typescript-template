@@ -15,14 +15,13 @@ pipeline {
       name: 'BRANCH'
     )
   }
+  // Secrets/Environment Variables to Jenkins Credentials
   environment {
       CONTAINER_NAME            = 'typescript-template-dev'
       TYPESCRIPT_TEMPLATE_PORT  = credentials('TYPESCRIPT_TEMPLATE_PORT')
-      API_KEY                   ='test'
-      LOG_FILE                  ='logs/express.log'
-      NO_AUTH                   =true
-      ADMIN_USERNAME            ='admin'
-      ADMIN_PASSWORD            ='password'
+      API_KEY                   = 'test'
+      ADMIN_USERNAME            = 'admin'
+      ADMIN_PASSWORD            = 'password'
   }
   stages {
     stage('Preparation') {
@@ -48,43 +47,24 @@ pipeline {
         }
       }
     }
-    // stage('Production Deploy') {
-    //   when {
-    //     allOf {
-    //         environment name: 'BRANCH', value: 'main'
-    //         environment name: 'DEPLOY_ENV', value: 'prod'
-    //     }
-    //   }
-    //   environment {
-    //     UNRAID_PORT = credentials('UNRAID_PORT_PROD')
-    //     CONTAINER_NAME = 'typesript-template-prod'
-    //   }
-    //   steps {
-    //     script {
-    //       echo 'Deploying to production...'
-
-    //       sh "docker stop ${CONTAINER_NAME} || true"
-
-    //       sh "docker rm ${CONTAINER_NAME} || true"
-
-    //       sh """docker run \
-    //               -d \
-    //               --name='${CONTAINER_NAME}' \
-    //               --net='bridge' \
-    //               -p '${UNRAID_PORT}:3000' \
-    //               'jamesgiesbrecht/typescript-template:${commit_id}'"""
-    //     }
-    //   }
-    // }
-    stage('Development Deploy') {
-      // when {
-      //   allOf {
-      //       environment name: 'DEPLOY_ENV', value: 'dev'
-      //   }
-      // }
+    // Customize deploy for other environments
+    stage('Production Deploy') {
+      when {
+        allOf {
+            environment name: 'BRANCH', value: 'main'
+            environment name: 'DEPLOY_ENV', value: 'prod'
+        }
+      }
+      // Conditionally customize environment variables
+      environment {
+        // TYPESCRIPT_TEMPLATE_PORT = credentials('TYPESCRIPT_TEMPLATE_PORT_PROD')
+        CONTAINER_NAME = 'typesript-template-prod'
+      }
+    }
+    stage('Deploy') {
       steps {
         script {
-          echo 'Deploying to dev...'
+          echo "Deploying ${BRANCH} to ${DEPLOY_ENV}..."
 
           sh "docker stop ${CONTAINER_NAME} || true"
 
@@ -95,7 +75,6 @@ pipeline {
                   --name='${CONTAINER_NAME}' \
                   --net='bridge' \
                   -e API_KEY'='${API_KEY}' \
-                  -e LOG_FILE'='${LOG_FILE}' \
                   -e ADMIN_USERNAME'='${ADMIN_USERNAME}' \
                   -e ADMIN_PASSWORD'='${ADMIN_PASSWORD}' \
                   -p '${TYPESCRIPT_TEMPLATE_PORT}:3000' \
