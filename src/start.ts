@@ -2,10 +2,10 @@ import express, { Express } from 'express'
 import bodyParser from 'body-parser'
 import http from 'http'
 import morganBody from 'morgan-body'
-import { LOGGED_ROUTES, log } from './middleware/morgan.js'
-import apiRoutes from './routes/api/index.js'
 
-import { authRouterMiddleware } from './middleware/auth.js'
+import { LOGGED_ROUTES, log } from './middleware/morgan'
+import apiRoutes from './routes/api'
+import { authRouterMiddleware } from './middleware/auth'
 
 const { NODE_ENV } = process.env
 const PORT = process.env.PORT || 3000

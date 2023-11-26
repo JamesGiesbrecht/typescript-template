@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "target": "es2017",
+    "module": "ES2022",
+    "moduleResolution": "Bundler",
+    "target": "ES2022",
+    "lib": ["ES2022"],
     "strict": true,
     "declaration": true,
     "outDir": "dist",
@@ -19,7 +20,7 @@
     "strictFunctionTypes": true,
     "strictNullChecks": false,
 
-    "allowJs": true,
+    "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
     "forceConsistentCasingInFileNames": false,
@@ -27,7 +28,12 @@
     // "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
-    "lib": ["es2021"]
+
+    "resolveJsonModule": true,
+
+    "checkJs": false,
+    "declarationMap": true,
+    "emitDeclarationOnly": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

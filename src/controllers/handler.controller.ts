@@ -1,5 +1,5 @@
 import { RequestHandler } from 'express'
-import { helloWorld, asyncHelloWorld } from '../services/handler.service.js'
+import { helloWorld, asyncHelloWorld } from '../services/handler.service'
 
 const { USER } = process.env
 

@@ -1,2 +1,2 @@
-import './loadEnv.js'
-import './start.js'
+import './loadEnv'
+import './start'

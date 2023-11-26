@@ -3,7 +3,7 @@ import express from 'express'
 import {
   getHelloWorld,
   getHelloWorldAsync,
-} from '../../controllers/handler.controller.js'
+} from '../../controllers/handler.controller'
 
 const router = express.Router()
 

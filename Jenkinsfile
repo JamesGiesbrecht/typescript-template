@@ -3,6 +3,7 @@ def commit_id
 
 pipeline {
   agent any
+  // Jenkins Pipeline Params
   parameters {
     choice(
       name: 'DEPLOY_ENV',
@@ -15,7 +16,7 @@ pipeline {
       name: 'BRANCH'
     )
   }
-  // Secrets/Environment Variables to Jenkins Credentials
+  // Setting environment variables and secrets
   environment {
       CONTAINER_NAME            = 'typescript-template-dev'
       TYPESCRIPT_TEMPLATE_PORT  = credentials('TYPESCRIPT_TEMPLATE_PORT')
@@ -24,6 +25,7 @@ pipeline {
       ADMIN_PASSWORD            = 'password'
   }
   stages {
+    // Checkout repo and get commit id
     stage('Preparation') {
       steps {
         checkout scm
@@ -38,6 +40,7 @@ pipeline {
         script {
           docker.withRegistry("https://index.docker.io/v1/", 'dockerhub') {
             def app = docker.build(
+              // CHANGEME
               "jamesgiesbrecht/typescript-template:${commit_id}",
               """--target prod \
               -f Dockerfile ."""
@@ -73,6 +76,7 @@ pipeline {
 
           sh "docker rm ${CONTAINER_NAME} || true"
 
+          // Add any other environment variables here
           sh """docker run \
                   -d \
                   --name='${CONTAINER_NAME}' \

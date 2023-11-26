@@ -1,6 +1,6 @@
 import express from 'express'
 
-import handlerRoutes from './handler.route.js'
+import handlerRoutes from '../../routes/api/handler.route'
 
 const router = express.Router()
 

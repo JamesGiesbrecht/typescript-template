@@ -6,11 +6,13 @@
   "type": "module",
   "scripts": {
     "start": "node dist/index.js",
-    "start:watch": "nodemon dist/index.js",
-    "build": "tsc",
-    "build:watch": "tsc --watch --preserveWatchOutput",
+    "build": "run-p -s build:*",
+    "build:main": "babel -x .ts -d dist src",
+    "build:types": "tsc",
     "dev": "yarn build && yarn start",
-    "watch": "concurrently -k \"yarn build:watch\" \"yarn start:watch\"",
+    "watch:build": "yarn tsc && yarn build:main --watch",
+    "watch:start": "nodemon dist/index.js",
+    "watch": "concurrently -k \"yarn watch:build\" \"yarn watch:start\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint '*/**/*.ts'",
     "compose:dev": "docker-compose -f docker-compose.yaml -f docker-compose.dev.yaml up -d --build && yarn compose:logs",
@@ -20,9 +22,11 @@
   "author": "James Giesbrecht",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.22.15",
     "@babel/core": "^7.17.12",
     "@babel/preset-env": "^7.17.12",
-    "@babel/preset-typescript": "^7.17.12",
+    "@babel/preset-typescript": "^7.22.15",
+    "babel-plugin-add-import-extension": "^1.6.0",
     "@types/body-parser": "^1.19.4",
     "@types/express": "^4.17.18",
     "@types/morgan": "^1.9.7",
@@ -37,8 +41,9 @@
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "eslint-plugin-prettier": "^5.0.0",
     "nodemon": "^3.0.1",
+    "npm-run-all": "^4.1.5",
     "prettier": "^3.0.3",
-    "typescript": "^5.0.4"
+    "typescript": "^5.2.2"
   },
   "dependencies": {
     "axios": "^1.5.1",

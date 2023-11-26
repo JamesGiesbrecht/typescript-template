@@ -1,6 +1,6 @@
 import fs from 'fs'
 
-import { LOG_FILE } from '../constants/index.js'
+import { LOG_FILE } from '../constants'
 
 // Catches all routes
 export const LOGGED_ROUTES = ['/']
